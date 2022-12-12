@@ -11,6 +11,28 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="flex">
+      <div id="nav-panel">
+                  <div class="nav_button active-nav-button">Пользователи</div>
+ 
+    
+               <%
+=begin%>
+ <%= button_to "Выйти из аккаунта", destroy_manager_session_path, method: :delete, id:'destroy_session', class:"nav-button", data:{turbo: false}%> 
+<%
+=end%>
+
+      </div>
+
+      <div id="main">
+        <%= yield %>
+      </div>
+      
+    </div>
+
+
+
+
   </body>
 </html>

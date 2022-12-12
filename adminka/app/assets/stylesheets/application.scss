@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ $bg-nav-panel: #0e1621;
+ $bg-main-part: #242f3d;
+ $bg-unactive-but:  #687689;
+
+ .flex{display: flex;}
+
+ body {
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    
+    #main{
+      background-color: $bg-main-part;
+      width: 80%;
+    }
+  }
+
+
+ #nav-panel {
+    background-color: $bg-nav-panel;
+    width: 20%;
+    min-height: 100vh;
+
+    .nav_button{
+      background-color: $bg-main-part;
+      margin: 2vw 2vw 1vw 2vw;
+      padding: 1vw;
+      font-size: 1.5vw;
+      border-radius: 3px;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+    .active-nav-button {
+      margin: 2vw 0 1vw 2vw;
+      border-radius: 3px 0 0 3px;
+    }
+
+    form button{
+      border-radius: 3px;
+      position: fixed;
+      bottom: 2vw;
+      background-color: #242f3d;
+      margin: 2vw 2vw 1vw 2vw;
+      padding: 1vw;
+      color: white;
+      border: none;
+      font-size: 1.5vw;
+      font-weight: bold;
+    }
+}
+
+
+.main-button{
+    color: white;
+    border: none;
+    font-size: 2vw;
+    width: 14vw;
+    background-color: $bg-nav-panel;
+    z-index: 1;
+    border-radius: 0.5vw;
+    font-weight: bold;
+    margin: 1.5vw 2.2vw;
+    height: 4vw;
+  }
+  .unactive{background-color: $bg-unactive-but;}
+
+  #table{
+    border: 2px solid white;
+    border-radius: 30px;
+    margin: 0 2vw;
+
+    .grid-head{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        text-align: center;
+        font-size: 2vw;
+
+
+
+        .bg-nav-panel{
+            background:  $bg-nav-panel;
+        }
+        .padding-1{
+            padding: 1vw;
+        }
+        // .border-r-30{
+        //     border-radius: 30px;
+        // }
+    }
+    .to-delete{
+        color: #912525;
+    }
+
+  }

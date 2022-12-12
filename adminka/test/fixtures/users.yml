@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  info: MyString
+  key: MyString
+  hwid: MyString
+  end_of_action: MyString
+  time_of_action: MyString
+  state: MyString
+
+two:
+  info: MyString
+  key: MyString
+  hwid: MyString
+  end_of_action: MyString
+  time_of_action: MyString
+  state: MyString
