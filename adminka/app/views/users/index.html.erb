@@ -22,7 +22,7 @@
             <div class="padding-1 cell"><span class="copy"><%= user.key %></span></div>
             <div class="bg-nav-panel padding-1  cell"><%= user.hwid %></div>
             <div class="padding-1 cell <%= expired?(user) %>">
-                <%= time_of_action_or_end_of_action(user) %> <br>
+                <%= time_of_action_or_end_of_action(user) %>
                 <% if expired?(user) %>
                     <button class="extend-time" data-id="<%= user.id %>">Продлить</button>
                 <% end %>
