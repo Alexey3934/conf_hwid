@@ -1,0 +1,22 @@
+<div id="form-wrap" data-controller="form">
+    <%= form_with model: @user do |f|  %>
+ 
+        <div class="form-row jc-sb">
+            <%= f.label 'info'%>    
+            <%= f.text_field :info, class:"trim"%>  
+        </div>
+
+        <div class="form-row jc-sb">
+            <div class="error"><%= @user.errors[:time_of_action][0] %></div>
+            <%= f.label 'Срок действия'%>    
+            <%= f.text_field :time_of_action, class:"trim" %>  
+        </div>
+
+
+        <div class="form-row jc-sb flex-aling">
+            <%= f.submit get_label(), id:"submit", class:'main-button', data:{id: @user.id}%>
+            <button id="cencel_form" class="main-button">Отмена</button>
+        </div>
+    <% end%>
+</div>
+

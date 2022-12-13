@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_states
+  
   def index
     @users = User.all
   end
@@ -17,6 +19,25 @@ class UsersController < ApplicationController
     else
       render :new, layout: false, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    render :edit, layout: false
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+
+
+    if @user.update(user_params)
+      @user.update(end_of_action:nil, state:nil)
+      head :ok
+    else
+      render :edit, layout: false, status: :unprocessable_entity
+    end
+
   end
 
   def destroy

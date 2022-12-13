@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
+
+
 export default class extends Controller {
   connect() {
     cencelFormListener()
@@ -27,17 +29,32 @@ const centring_form = () => {
 
 
 
+function getSubPathAndMethod(submit) {
+  console.log(submit)
+  const id = submit.dataset.id
 
 
+  let method = ''
+  let subPath = ''
 
-function validation_on_digits(input){
-  const regex = new RegExp('^[0-9]+$')
-  if (!regex.test(input)) {
-    alert("в поле должны быть введено число")
-    return true
-  } 
-  return false
+  if (!id) method = 'POST'
+  else if (id){
+      method = 'PUT'
+      subPath = `/${id}`
+  }
+  return {method: method, 
+          subPath: subPath}
 }
+
+
+// function validation_on_digits(input){
+//   const regex = new RegExp('^[0-9]+$')
+//   if (!regex.test(input)) {
+//     alert("в поле должны быть введено число")
+//     return true
+//   } 
+//   return false
+// }
 
 
 
@@ -46,8 +63,12 @@ function submitListener() {
     $(".trim").each((_i, input)=>input.value = input.value.trim())
 
     const formData = new FormData(e.target);  
-    fetch('/users', {
-          method: 'post',
+
+    const submit = document.querySelector("#submit")
+    const data = getSubPathAndMethod(submit)
+
+    fetch(`/users${data.subPath}`, {
+          method: data.method,
           body: formData,
           headers: {'X-CSRF-Token': X_CSRF_Token}
       })

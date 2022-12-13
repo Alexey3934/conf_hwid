@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
         unless time_is_out
           render plain: 'true'        
         else          
-          user.destroy
+          # user.destroy
           render plain: 'false'
         end
       else 

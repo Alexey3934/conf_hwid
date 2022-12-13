@@ -4,7 +4,24 @@ export default class extends Controller {
   connect() {
     newUserListener()
     deleteListener()
+    extendTimeListener()
   }
+}
+
+function extendTimeListener() {
+  const buttons = $(".extend-time")
+  buttons.each((_i,but)=>{
+    but.addEventListener('click',(e)=>{
+      $("#blanket").addClass('blanket')
+      const id = e.target.dataset.id
+      fetch(`/users/${id}/edit`)
+      .then(res=>res.text())
+      .then(html=>{$('body').append(html)
+
+      // e.stopPropagation()
+    })
+    })
+  })
 }
 
 
