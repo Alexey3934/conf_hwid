@@ -11,7 +11,9 @@ class RequestsController < ApplicationController
     if user
       unless  user.end_of_action
         end_of_action = Time.now + (user.time_of_action.to_i * 60) # расчёт в минутах
-        user.update(end_of_action:end_of_action, hwid:hwid)
+        
+        user.update(end_of_action:end_of_action)
+        user.update(hwid:hwid) unless user.hwid # не обновлять, если ранее был внесён, а сейчас происходит проделение времени
       end
       if user.hwid == hwid
         time_is_out = user.end_of_action < Time.now 

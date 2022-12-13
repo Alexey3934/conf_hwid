@@ -19,7 +19,7 @@
 
         <div class="grid-head grid-user cell f-s-1" data-id="<%=user.id%>">
             <div class="bg-nav-panel padding-1 <%= make_border_for_last(user.id) %> cell"><%= user.info %></div>
-            <div class="padding-1 cell"><%= user.key %></div>
+            <div class="padding-1 cell"><span class="copy"><%= user.key %></span></div>
             <div class="bg-nav-panel padding-1  cell"><%= user.hwid %></div>
             <div class="padding-1 cell <%= expired?(user) %>">
                 <%= time_of_action_or_end_of_action(user) %> <br>

@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     gridRowListener()
+    copyKeyListener()
     // makeBorderRadius()
   }
 }
@@ -21,12 +22,41 @@ export default class extends Controller {
 // }
 
 
+const copyContent = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Content copied to clipboard');
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
+}
+
+function viewCopied(text){
+  text.style.color = 'black'
+  setTimeout(()=>{
+    text.style.color = 'white'
+  }, 500)
+
+}
 
 
+function copyKeyListener() {
+    $(".copy").each((_i,text)=>{
+      text.addEventListener('click', (e)=>{
+        const text = e.target
+        copyContent(text.innerHTML)
+        viewCopied(text)
+
+      })
+
+
+    })
+}
 
 
 function toggleToDelete(event){
     if (event.target.classList.contains('extend-time')) return
+    if (event.target.classList.contains('copy')) return
     
 
 
