@@ -3,23 +3,23 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     gridRowListener()
-    deleteListener()
+    // makeBorderRadius()
   }
 }
 
 
+function makeBorderRadius(){
+  const items = $(".border-r-30")
+  if (items.length == 1) {
+    items[0].style.borderRadius =  '30px 0 0 30px'
+    return
+  }
 
-function deleteListener(){
-    const delete_button = $("#delete")
-    delete_button.on('click', ()=>{
-        if (delete_button.hasClass('unactive')) return
-
-        const ids = []
-        $(".grid-user").each((_i,val)=>{
-            if (val.classList.contains('to-delete')) ids.push(val.dataset.id)
-        })
-    })
+  const lastItem = items.length - 1 
+  items[0].style.borderRadius =  '30px 0 0 0'
+  items[lastItem].style.borderRadius =  '0 0 0 30px'  
 }
+
 
 
 

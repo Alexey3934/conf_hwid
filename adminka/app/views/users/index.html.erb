@@ -1,23 +1,27 @@
-<div id="panel">
+<div id="panel" data-controller="panel">
     <button id="new" class="main-button">Добавить</button>
     <button id="delete" class="main-button unactive">Удалить</button>
 </div>
 
 <div id="table" data-controller="grid">
     <div class="grid-head">
-        <div class="bg-nav-panel padding-1 border-r-30">info</div>
+        <div class="bg-nav-panel padding-1 <%= make_border_for_first() %>">info</div>
         <div class="padding-1">ключ</div>
         <div class="bg-nav-panel padding-1">hwid</div>
         <div class="padding-1">срок действия</div>
     </div>
 
+    <% unless @users.size == 0%>
+        <div class='hr'></div>
+    <% end %>
+
     <% for user in @users %>
 
-        <div class="grid-head grid-user" data-id="<%=user.id%>">
-            <div class="bg-nav-panel padding-1 border-r-30"><%= user.info %></div>
-            <div class="padding-1"><%= user.key %></div>
-            <div class="bg-nav-panel padding-1"><%= user.hwid %></div>
-            <div class="padding-1"><%= time_of_action_or_end_of_action(user) %></div>
+        <div class="grid-head grid-user cell" data-id="<%=user.id%>">
+            <div class="bg-nav-panel padding-1 <%= make_border_for_last(user.id) %> cell"><%= user.info %></div>
+            <div class="padding-1 cell"><%= user.key %></div>
+            <div class="bg-nav-panel padding-1  cell"><%= user.hwid %></div>
+            <div class="padding-1 cell"><%= time_of_action_or_end_of_action(user) %></div>
         </div>
 
     <% end %>
