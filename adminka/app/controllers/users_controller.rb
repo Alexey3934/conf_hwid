@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :check_states
   
+  http_basic_authenticate_with name: "admin", password: 'admin'
+
+
   def index
     @users = User.all
   end
