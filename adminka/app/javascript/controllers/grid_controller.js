@@ -5,21 +5,18 @@ export default class extends Controller {
     gridRowListener()
     copyKeyListener()
     // makeBorderRadius()
+    hrs()
   }
 }
 
+function hrs(){
+  const rows = $(".grid-user")
 
-// function makeBorderRadius(){
-//   const items = $(".border-r-30")
-//   if (items.length == 1) {
-//     items[0].style.borderRadius =  '30px 0 0 30px'
-//     return
-//   }
+  rows.each((i, row)=>{
+    if (i < (rows.length - 1)) row.style.borderBottom = 'dashed 1px #3b3b3b'
+  })
+}
 
-//   const lastItem = items.length - 1 
-//   items[0].style.borderRadius =  '30px 0 0 0'
-//   items[lastItem].style.borderRadius =  '0 0 0 30px'  
-// }
 
 
 const copyContent = async (text) => {
